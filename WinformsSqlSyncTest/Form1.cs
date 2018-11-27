@@ -47,5 +47,10 @@ namespace WinformsSqlSyncTest
         {
             _sqliteService.UpdateDataTable(_dataTable);
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            _sqliteService.DeleteOneRow();
+        }
     }
 }
