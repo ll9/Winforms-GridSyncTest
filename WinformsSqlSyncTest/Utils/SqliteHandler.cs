@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WinformsSqlSyncTest.Utils
 {
-    class SqliteHandler
+    public class SqliteHandler
     {
         public SqliteHandler(string dbName, string tableName)
         {
