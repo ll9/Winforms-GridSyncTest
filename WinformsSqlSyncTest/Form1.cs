@@ -14,6 +14,7 @@ namespace WinformsSqlSyncTest
     public partial class Form1 : Form
     {
         private SqliteHandler _sqliteService = SqliteFactory.CreateInstance();
+        private DataTable _dataTable = new DataTable();
 
         public Form1()
         {
@@ -33,6 +34,18 @@ namespace WinformsSqlSyncTest
         private void button3_Click(object sender, EventArgs e)
         {
             _sqliteService.DropTable();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            _dataTable = _sqliteService.GetDataTable();
+            dataGridView1.DataSource = _dataTable;
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            _sqliteService.UpdateDataTable(_dataTable);
         }
     }
 }

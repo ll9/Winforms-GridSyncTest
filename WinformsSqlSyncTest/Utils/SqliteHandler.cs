@@ -70,8 +70,10 @@ namespace WinformsSqlSyncTest.Utils
             using (var connection = GetConnection())
             using (var transaction = connection.BeginTransaction())
             using (var adapter = new SQLiteDataAdapter(query, connection))
+            using (var builder = new SQLiteCommandBuilder(adapter))
             {
                 adapter.Update(table);
+                transaction.Commit();
             }
         }
 
