@@ -77,6 +77,21 @@ namespace WinformsSqlSyncTest.Utils
             }
         }
 
+        public void DeleteOneRow()
+        {
+            var query = $"SELECT Id from {tableName} LIMIT 1";
+            int id;
+
+            using (var conneciton = GetConnection())
+            using (var command = new SQLiteCommand(query, conneciton))
+            {
+                id = int.Parse(command.ExecuteScalar().ToString());
+            }
+
+            var delQuery = $"DELETE FROM {tableName} WHERE Id = {id}";
+            ExecuteQuery(delQuery);
+        }
+
         private void ExecuteQuery(string query)
         {
             using (var connection = GetConnection())
